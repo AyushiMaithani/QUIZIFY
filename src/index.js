@@ -3,21 +3,38 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 const userModel = require("./config");
 
-
 const app = express();
+//convert data into json format
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: false }));
 
 //use ejs as view engine
 app.set("view engine", "ejs");
-//adds public automatically while linking css file
+//adds public automatically while linking css file(static file)
 app.use(express.static("public"));
 
 //base route
 app.get("/", (req, res) => {
+  res.render("signup");
+});
+
+app.get("/login", (req, res) => {
   res.render("login");
 });
 
-app.get("/signup", (req, res) => {
-  res.render("signup");
+app.post("/", async (req, res) => {
+  const data = {
+    fullname: req.body.fullname,
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  };
+
+  //check if user already exists
+  const existingUser = await userModel.findOne({ username: data.username });
+  const userData = await userModel.insertMany(data);
+  console.log(userData);
 });
 
 const port = 5000;
