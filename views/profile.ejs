@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="stylesheets/quizz.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="profile">
+      <div class="profile-btn">
+        <button onclick="window.location.href='/leaderboard'">
+          Leaderboard
+        </button>
+        <a href="/logout"><button>Logout</button></a>
+      </div>
+      <div class="user-profile">
+        <p>Hello <%= user.username %>,</p>
+        <p>Your high score is <%= user.highscore %></p>
+        <p>Your last score was <%= user.lastscore %></p>
+
+        <div class="start-btn">
+          <button>Start Quiz</button>
+        </div>
+      </div>
+    </div>
+    <div class="info-box-pre">
+      <div class="info-title">
+        <span>Please select a difficulty level and category before proceeding</span>
+      </div>
+      <div class="info-list">
+        <div class="info">
+          <div>Number Of Questions</div>
+           <div><select class="select num">
+            <option value="" disabled selected>Select</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            </select></div>
+          </div>
+        <div class="info">
+        <div> Difficulty</div>
+         <div><select class="select diff">
+          <option value="" disabled selected>Select Difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+          </select></div>
+        </div>
+        <div class="info">
+        <div>Category</div>
+      <div> <select class="select cat">
+        <option value="" disabled selected>Select Category</option>
+          </select></div> 
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="quit">Exit Quiz</button>
+        <button class="cont">Continue</button>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="info-title">
+        <span>Some Rules of this Quiz</span>
+      </div>
+      <div class="info-list">
+        <div class="info">
+          1. You will have only <span>15 seconds</span> per each question.
+        </div>
+        <div class="info">
+          2. Once you select your answer you can't reselect.
+        </div>
+        <div class="info">
+          3. You can't select any option one's time goes off.
+        </div>
+
+        <div class="info">
+          5. You'll get points on the basis of your correct answer.
+          <div class="info">
+            <div>
+              <div>Easy - 1 point per question</div>
+              <div>Medium - 1.5 points per question</div>
+              <div>Hard - 2 points per question</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="quit">Exit Quiz</button>
+        <button class="cont">Continue</button>
+      </div>
+    </div>
+    <div class="quiz-box">
+      <header>
+        <div class="title">Quizifyyyy</div>
+        <div class="timer">
+          <div class="time-text">Time Left</div>
+          <div class="time-sec">15</div>
+          <div class="time-line"></div>
+        </div>
+      </header>
+      <section>
+        <div class="ques"></div>
+        <div class="option-list">
+          <div class="option"></div>
+          <div class="option"></div>
+          <div class="option"></div>
+          <div class="option"></div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="total-ques"></div>
+        <div
+          id="exit-quiz-container-jsRef"
+          class="flex-center flex-column glass text-center hidden"
+        >
+          <h1>Are you sure you would like to exit the quiz?</h1>
+          <p>
+            Your game progress will be lost and you will be returned to the home
+            screen
+          </p>
+          <button id="btn-exit-game-jsRef" class="btn exit-game-button">
+            Return home
+          </button>
+          <button
+            id="btn-continue-playing-jsRef"
+            class="btn continue-game-button"
+          >
+            Continue playing
+          </button>
+        </div>
+        <div class="buttons">
+          <button class="quit-btn">Quit Quiz</button>
+          <button class="next-btn">Next Ques</button>
+        </div>
+      </footer>
+    </div>
+
+    <div class="result-box">
+      <div class="icon">
+        <i class="fas fa-crown"></i>
+      </div>
+      <div class="complete-text">You've completed the quiz!</div>
+      <div class="score">
+        <!-- <span>
+          you got
+          <p>2</p>
+          out of
+          <p>5</p>
+        </span> -->
+      </div>
+      <div class="buttons">
+        <button class="cont">Replay quiz</button>
+        <button class="quit">Quit quiz</button>
+      </div>
+    </div>
+
+    <script src="javascripts/script.js"></script>
+  </body>
+</html>
