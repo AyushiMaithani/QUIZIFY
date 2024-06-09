@@ -33,8 +33,12 @@ app.post("/", async (req, res) => {
 
   //check if user already exists
   const existingUser = await userModel.findOne({ username: data.username });
-  const userData = await userModel.insertMany(data);
-  console.log(userData);
+  if (existingUser) {
+    res.send("user already exists.Please choose a different username ");
+  } else {
+    const userData = await userModel.insertMany(data);
+    console.log(userData);
+  }
 });
 
 const port = 5000;
